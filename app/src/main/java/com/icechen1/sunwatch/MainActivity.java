@@ -6,6 +6,8 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
 import android.text.format.DateFormat;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -33,6 +35,7 @@ public class MainActivity extends Activity implements  GoogleApiClient.Connectio
     private TextView mSunSetTextView;
     private TextView mSunRiseTextViewTBA;
     private TextView mSunSetTextViewTBA;
+    private RelativeLayout mOverlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,8 @@ public class MainActivity extends Activity implements  GoogleApiClient.Connectio
 
                 mSunRiseTextViewTBA = (TextView) stub.findViewById(R.id.sunrise_tba);
                 mSunSetTextViewTBA = (TextView) stub.findViewById(R.id.sunset_tba);
+
+                mOverlay = (RelativeLayout) stub.findViewById(R.id.overlay);
             }
         });
         //getPackageManager().hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS_;
@@ -101,9 +106,9 @@ public class MainActivity extends Activity implements  GoogleApiClient.Connectio
         // Use high accuracy
         locationRequest.setPriority(LocationRequest.PRIORITY_LOW_POWER);
         // Set the update interval to 2 seconds
-        locationRequest.setInterval(60);
+        locationRequest.setInterval(2);
         // Set the fastest update interval to 2 seconds
-        locationRequest.setFastestInterval(30);
+        locationRequest.setFastestInterval(2);
         // Set the minimum displacement
         locationRequest.setSmallestDisplacement(2);
 
@@ -142,6 +147,13 @@ public class MainActivity extends Activity implements  GoogleApiClient.Connectio
     }
 
     void updateViews(Location location){
+        //Null check
+        if(location == null){
+            mOverlay.setVisibility(View.VISIBLE);
+            return;
+        }else{
+            mOverlay.setVisibility(View.GONE);
+        }
         // Display the latitude and longitude in the UI
         mlocation = location;
         // mTextView.setText("Latitude:  " + String.valueOf( location.getLatitude()) +

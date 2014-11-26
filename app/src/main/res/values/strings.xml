@@ -6,6 +6,7 @@
     <string name="hello_square">Fetching Location…</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
+    <string name="waiting">Finding Location</string>
 
 
 </resources>
