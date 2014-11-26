@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Solar Watch</string>
+    <string name="hello_round">Fetching Location…</string>
+    <string name="hello_square">Fetching Location…</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+
+
+</resources>
