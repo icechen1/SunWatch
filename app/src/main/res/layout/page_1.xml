@@ -60,7 +60,8 @@
         android:layout_height="fill_parent"
         android:layout_gravity="center_horizontal"
         android:background="#caf7fff9"
-        android:id="@+id/overlay">
+        android:id="@+id/overlay"
+        android:visibility="visible">
 
         <ImageView
             android:layout_width="wrap_content"
